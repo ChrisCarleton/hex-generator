@@ -1,0 +1,48 @@
+version: 2.1
+
+jobs:
+  test:
+    docker:
+      - image: node:10.15.3-jessie
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - hexgen_{{ checksum "package.json" }}
+            - hexgen_
+      - run:
+          name: Test
+          command: |
+            npm install -g gulp-cli
+            npm install
+            gulp
+      - save_cache:
+          key: hexgen_{{ checksum "package.json" }}
+          paths:
+            - node_modules/
+      - persist_to_workspace:
+          root: ./
+          paths: .
+  deploy:
+    docker:
+      - image: node:10.15.3-jessie
+    steps:
+      - attach_workspace:
+          at: ./
+      - run:
+          name: Publish to NPM
+          command: |
+            echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > .npmrc
+            npm publish
+
+workflows:
+  version: 2
+  test-and-deploy:
+    jobs:
+      - test
+      - deploy:
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
