@@ -1,0 +1,31 @@
+{
+  "name": "hex-generator",
+  "version": "1.0.0",
+  "description": "Generates a random hexadecimal string given the number of bits to generate.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChrisCarleton/hex-generator.git"
+  },
+  "keywords": [
+    "hex",
+    "hexadecimal",
+    "generator",
+    "random"
+  ],
+  "author": "Chris Carleton",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ChrisCarleton/hex-generator/issues"
+  },
+  "homepage": "https://github.com/ChrisCarleton/hex-generator#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "gulp": "^4.0.2",
+    "gulp-eslint": "^6.0.0",
+    "gulp-mocha": "^6.0.0"
+  }
+}
