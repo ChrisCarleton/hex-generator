@@ -19,6 +19,11 @@ describe('Hexadecimal Generator', () => {
 		expect(result).to.match(/^[a-f0-9]+$/i).and.to.have.a.lengthOf(64);
 	});
 
+	it('Generates a 1-bit string', () => {
+		const result = hexgen(1);
+		expect(result).to.match(/^[01]$/i).and.to.have.a.lengthOf(1);
+	})
+
 	it('Generates a 24-bit string', () => {
 		const result = hexgen(24);
 		expect(result).to.match(/^[a-f0-9]+$/i).and.to.have.a.lengthOf(6);

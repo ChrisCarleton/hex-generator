@@ -14,7 +14,7 @@ module.exports = function(bits) {
 	let hex = '';
 
 	if (remainder) {
-		hex = Math.floor(Math.random() * (2 ^ remainder - 1)).toString(16);
+		hex = Math.floor(Math.random() * (1 << remainder)).toString(16);
 	}
 
 	for (let i = 0; i < nibbles; i++) {
